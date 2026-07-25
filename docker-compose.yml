@@ -1,9 +1,8 @@
-version: '3.8'
 services:
   app:
     build: .
     ports:
-      - "80:80"
+      - "8081:80"
     depends_on:
       db:
         condition: service_healthy

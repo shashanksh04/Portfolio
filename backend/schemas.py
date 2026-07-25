@@ -19,6 +19,7 @@ class ExperienceOut(BaseModel):
     company: str
     duration: str
     description: str
+    created_at: datetime
 
     model_config = {"from_attributes": True}
 
@@ -30,6 +31,16 @@ class ContactIn(BaseModel):
 
 
 class ContactOut(BaseModel):
+    id: int
+    name: str
+    email: str
+    message: str
+    created_at: datetime
+
+    model_config = {"from_attributes": True}
+
+
+class MessageOut(BaseModel):
     id: int
     name: str
     email: str

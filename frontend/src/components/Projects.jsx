@@ -59,6 +59,7 @@ const fallback = [
 
 export default function Projects() {
   const [projects, setProjects] = useState(null)
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
   function parseDesc(d) {
@@ -68,16 +69,22 @@ export default function Projects() {
   }
 
   useEffect(() => {
-    fetch(`${API_BASE}/api/projects`)
+    fetch(`${API_BASE}/projects`)
       .then((r) => {
         if (!r.ok) throw new Error('Failed to load')
         return r.json()
       })
-      .then((data) => setProjects(data.map((p) => ({ ...p, description: parseDesc(p.description), status: p.github_url ? 'Live' : 'Demo' }))))
-      .catch(() => setError(true))
+      .then((data) => {
+        setProjects(data.map((p) => ({ ...p, description: parseDesc(p.description), status: p.github_url ? 'Live' : 'Demo' })))
+        setLoading(false)
+      })
+      .catch(() => {
+        setError(true)
+        setLoading(false)
+      })
   }, [])
 
-  const items = error || !projects ? fallback : projects
+  const items = error ? fallback : (projects || [])
 
   const statusColors = {
     Live: 'bg-green-500/10 text-green-400 border-green-500/20',
@@ -97,6 +104,12 @@ export default function Projects() {
             Projects<span className="text-accent">/</span>
           </h2>
         </Reveal>
+
+        {loading && (
+          <div className="flex justify-center py-12">
+            <div className="w-6 h-6 border-2 border-accent border-t-transparent rounded-full animate-spin" />
+          </div>
+        )}
 
         <div className="grid md:grid-cols-2 gap-5 md:gap-6">
           {items.map((p, i) => (

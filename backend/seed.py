@@ -1,8 +1,6 @@
 from database import SessionLocal, engine, Base
 from models import Project, Experience
 
-Base.metadata.create_all(bind=engine)
-
 projects = [
     {
         "title": "AI-Powered Resume Evaluator",
@@ -47,18 +45,23 @@ experiences = [
 
 
 def seed():
+    Base.metadata.create_all(bind=engine)
     db = SessionLocal()
 
-    db.query(Project).delete()
-    db.query(Experience).delete()
+    if db.query(Project).count() > 0:
+        db.close()
+        print("Database already seeded, skipping.")
+        return
+
     for p in projects:
         db.add(Project(**p))
     for e in experiences:
         db.add(Experience(**e))
     db.commit()
     db.close()
-    print("Database re-seeded.")
+    print("Database seeded.")
 
 
 if __name__ == "__main__":
+    Base.metadata.create_all(bind=engine)
     seed()

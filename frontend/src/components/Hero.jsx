@@ -17,13 +17,13 @@ const socialLinks = [
 ]
 
 const terminalLines = [
-  { prefix: '$', text: 'npm run dev', color: 'text-cyan' },
+  { prefix: '$', text: 'npm run dev', color: 'text-cyan-DEFAULT' },
   { prefix: '>', text: 'shashank-ai-engineer@1.0.0 dev', color: 'text-gray-500' },
   { prefix: '>', text: 'vite', color: 'text-gray-500' },
   { prefix: '', text: '', color: '' },
   { prefix: '✓', text: 'ready in 312ms', color: 'text-green-400' },
   { prefix: '', text: '', color: '' },
-  { prefix: '➜', text: 'Local:   http://localhost:5173/', color: 'text-cyan' },
+  { prefix: '➜', text: 'Local:   http://localhost:5173/', color: 'text-cyan-DEFAULT' },
   { prefix: '➜', text: 'Network: http://192.168.1.100:5173/', color: 'text-gray-400' },
 ]
 

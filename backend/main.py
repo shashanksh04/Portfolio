@@ -1,14 +1,12 @@
-from fastapi import FastAPI, Depends, HTTPException
+from fastapi import FastAPI, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
 
 from database import engine, Base, get_db
 from models import Project, Experience, ContactMessage
-from schemas import ProjectOut, ExperienceOut, ContactIn, ContactOut
-from seed import seed
+from schemas import ProjectOut, ExperienceOut, ContactIn, ContactOut, MessageOut
 
 Base.metadata.create_all(bind=engine)
-seed()
 
 app = FastAPI(title="Portfolio API")
 
@@ -38,3 +36,8 @@ def submit_contact(data: ContactIn, db: Session = Depends(get_db)):
     db.commit()
     db.refresh(msg)
     return msg
+
+
+@app.get("/api/messages", response_model=list[MessageOut])
+def get_messages(db: Session = Depends(get_db)):
+    return db.query(ContactMessage).order_by(ContactMessage.id.desc()).all()

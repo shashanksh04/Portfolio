@@ -41,6 +41,7 @@ const fallback = [
 
 export default function Experience() {
   const [exp, setExp] = useState(null)
+  const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
 
   function parseDesc(d) {
@@ -50,16 +51,22 @@ export default function Experience() {
   }
 
   useEffect(() => {
-    fetch(`${API_BASE}/api/experience`)
+    fetch(`${API_BASE}/experience`)
       .then((r) => {
         if (!r.ok) throw new Error('Failed to load')
         return r.json()
       })
-      .then((data) => setExp(data.map((e) => ({ ...e, description: parseDesc(e.description) }))))
-      .catch(() => setError(true))
+      .then((data) => {
+        setExp(data.map((e) => ({ ...e, description: parseDesc(e.description) })))
+        setLoading(false)
+      })
+      .catch(() => {
+        setError(true)
+        setLoading(false)
+      })
   }, [])
 
-  const items = error || !exp ? fallback : exp.map((e) => ({
+  const items = error ? fallback : (exp || []).map((e) => ({
     ...e,
     metrics: [],
   }))
@@ -77,6 +84,12 @@ export default function Experience() {
           </h2>
         </Reveal>
 
+        {loading && (
+          <div className="flex justify-center py-12">
+            <div className="w-6 h-6 border-2 border-accent border-t-transparent rounded-full animate-spin" />
+          </div>
+        )}
+
         <div className="space-y-8 md:space-y-10">
           {items.map((e, i) => (
             <Reveal key={e.id} delay={i * 150} direction={i % 2 === 0 ? 'left' : 'right'}>
@@ -90,7 +103,7 @@ export default function Experience() {
                       @ {e.company}
                     </p>
                   </div>
-                  <span className="text-xs font-mono text-cyan font-medium shrink-0 px-3 py-1 bg-cyan/10 rounded-full border border-cyan/20">
+                  <span className="text-xs font-mono text-cyan-DEFAULT font-medium shrink-0 px-3 py-1 bg-cyan/10 rounded-full border border-cyan/20">
                     {e.duration}
                   </span>
                 </div>
