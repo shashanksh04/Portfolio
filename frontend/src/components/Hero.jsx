@@ -45,7 +45,7 @@ export default function Hero() {
             <span className="text-gradient">A Kumar</span>
           </h1>
           <p className="text-base md:text-lg text-gray-400 leading-relaxed mb-6 max-w-lg">
-            US Citizen &mdash; Incoming Rice CS MS focused on full-stack AI systems: multi-agent
+            US Citizen &mdash; Rice MCS focused on full-stack AI systems: multi-agent
             LLM orchestration, FastAPI backends, and ML forecasting.
           </p>
           <div className="flex flex-wrap gap-3 mb-8">
