@@ -3,16 +3,22 @@ from models import Project, Experience
 
 projects = [
     {
+        "title": "Finance Tracker",
+        "description": "Eight-module finance platform serving 150+ users\nPostgreSQL-backed financial data with AI analysis and goal tracking\nEight-node LangGraph copilot with SSE streaming and parallel retrieval\nUnder 100ms API response latency\nBill scanning with PaddleOCR, EasyOCR and LLM extraction\nOffline-first SQLite synchronization",
+        "tech_stack": "React, Python, FastAPI, PostgreSQL, LangGraph, PaddleOCR, EasyOCR, SQLite, Redis",
+        "github_url": "https://finance.shashankakumar.com/",
+    },
+    {
+        "title": "Password Manager",
+        "description": "Deployed on a Raspberry Pi 5 (8 GB RAM, 256 GB SSD)\nBrowser-side vault encryption\nServer-side encrypted synchronization\np95 API metadata latency under 300ms\nLocal search under 100ms across 1,000 vault items",
+        "tech_stack": "Python, SQLite, Encryption, Raspberry Pi, Cloudflare Tunnel",
+        "github_url": "https://password.shashankakumar.com/",
+    },
+    {
         "title": "AI-Powered Resume Evaluator",
         "description": "LLM-as-judge engine with Ollama (DeepSeek + Gemma)\n8 evaluation dimensions\n85% agreement with human reviewers\nValidated on 20+ real resumes\nRole-specific improvement suggestions",
         "tech_stack": "Python, Ollama, LangChain, FastAPI, React, PostgreSQL",
         "github_url": "https://github.com/shashanksh04/resume-evaluator",
-    },
-    {
-        "title": "AI-Powered Finance Tracker",
-        "description": "Full-stack finance platform\nJWT authentication\nMulti-account transaction management\nBill OCR with 94% accuracy\nReceipts processed in under 1.2s\nFinancial Copilot with Redis memory",
-        "tech_stack": "React, Python, FastAPI, PostgreSQL, Celery, Redis, Ollama",
-        "github_url": "https://github.com/shashanksh04/finance-tracker",
     },
     {
         "title": "Multi-Agent Autonomous Story Generation Engine",
@@ -30,16 +36,16 @@ projects = [
 
 experiences = [
     {
+        "role": "Research Software Engineer",
+        "company": "MD Anderson Cancer Center",
+        "duration": "Sept 2026 - Present",
+        "description": "Built a PostgreSQL and FastAPI platform ingesting seven EEG recordings from four participants and 24,494 music-feature rows with SHA-256 file integrity checks and repeatable transactional imports\nDeveloped researcher-reviewed quality screening, MNE-Python preprocessing and band power/asymmetry extraction; preserved source timestamps, excluded intervals, and analysis provenance\nEstablished 211 passing tests covering ingestion, numerical behaviour, migrations, permissions, and concurrent retries; validated preprocessing with synthetic signals and imported 4,080 synthetic feature observations",
+    },
+    {
         "role": "Software Development Intern",
         "company": "Genworx AI",
         "duration": "Oct 2025 - Jan 2026",
-        "description": "5-agent LLM pipeline\nAgents: orchestrator, genre, character, plot, writer\nStory generation: 3-4 hrs to under 15 min\nNarrative consistency across chapters\n30 story generation requests completed",
-    },
-    {
-        "role": "Data Science Intern",
-        "company": "Ether InfoTech",
-        "duration": "Jan 2024 - Feb 2024",
-        "description": "LSTM stock forecasting model\n10 years of OHLCV data across 15 tickers\nTest-set MAE: 2.8%\n31% improvement over moving-average baseline\n25% faster training time\n47 → 19 features via correlation selection",
+        "description": "Built an ingestion and LLM extraction service for medical claims, invoices, and vendor contracts across unstructured PDFs, scanned images, and text files\nAchieved 92% F1 on unseen document templates; added confidence scoring and typed JSON validation to route uncertain results for human review\nReduced manual data entry and review time by 85%; used asynchronous processing and batching to support 10,000+ documents per day and reduce average API latency by 40%",
     },
 ]
 
@@ -48,10 +54,8 @@ def seed():
     Base.metadata.create_all(bind=engine)
     db = SessionLocal()
 
-    if db.query(Project).count() > 0:
-        db.close()
-        print("Database already seeded, skipping.")
-        return
+    db.query(Project).delete()
+    db.query(Experience).delete()
 
     for p in projects:
         db.add(Project(**p))
@@ -59,9 +63,8 @@ def seed():
         db.add(Experience(**e))
     db.commit()
     db.close()
-    print("Database seeded.")
+    print("Database synced.")
 
 
 if __name__ == "__main__":
-    Base.metadata.create_all(bind=engine)
     seed()

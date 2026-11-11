@@ -4,32 +4,37 @@ const groups = [
   {
     title: 'Languages',
     icon: '{}',
-    items: ['Python', 'SQL', 'JavaScript', 'TypeScript', 'HTML', 'CSS'],
-  },
-  {
-    title: 'Frontend',
-    icon: '</>',
-    items: ['React', 'Redux', 'Tailwind CSS', 'Next.js', 'Framer Motion'],
+    items: ['Python', 'SQL', 'JavaScript', 'C++', 'Go', 'MATLAB'],
   },
   {
     title: 'Backend & APIs',
     icon: '⚡',
-    items: ['FastAPI', 'SQLAlchemy', 'Node.js', 'REST', 'GraphQL', 'WebSockets', 'Celery'],
+    items: ['FastAPI', 'SQLAlchemy', 'REST API Design', 'Postman', 'Pydantic', 'Asynchronous Processing'],
   },
   {
-    title: 'Databases',
+    title: 'Databases & Caching',
     icon: 'DB',
-    items: ['PostgreSQL', 'Redis', 'MongoDB', 'Elasticsearch', 'SQLite', 'Supabase'],
+    items: ['PostgreSQL', 'Redis', 'SQLite', 'MongoDB', 'MySQL', 'SQL Indexing'],
   },
   {
-    title: 'AI / ML & Agentic AI',
+    title: 'AI / LLM',
     icon: '🧠',
-    items: ['scikit-learn', 'TensorFlow', 'PyTorch', 'LangChain', 'LangGraph', 'RAG', 'Ollama', 'Hugging Face', 'CrewAI'],
+    items: ['LangChain', 'LangGraph', 'RAG Pipelines', 'Prompt Engineering & Workflows', 'Document Extraction'],
   },
   {
-    title: 'DevOps & Tools',
+    title: 'Frontend',
+    icon: '</>',
+    items: ['React', 'React Native', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Redux Toolkit', 'HTML/CSS'],
+  },
+  {
+    title: 'Development & DevOps',
     icon: '🛠',
-    items: ['Git', 'Docker', 'Linux', 'AWS', 'Pytest', 'CI/CD', 'GitHub Actions', 'NGINX'],
+    items: ['Git', 'Docker', 'Linux', 'Cloudflare Tunnel', 'CI/CD'],
+  },
+  {
+    title: 'Cloud',
+    icon: '☁',
+    items: ['AWS EC2', 'S3', 'Lambda', 'IAM', 'Google Cloud Run', 'RDS', 'Cloud Storage'],
   },
 ]
 

@@ -3,38 +3,42 @@ import Reveal from './Reveal'
 
 const API_BASE = import.meta.env.VITE_API_URL || '/api'
 
+const metricsByCompany = {
+  'MD Anderson Cancer Center': [
+    { value: '7', label: 'EEG', suffix: 'recordings ingested' },
+    { value: '24,494', label: 'Music rows', suffix: 'feature data' },
+    { value: '211', label: 'Tests', suffix: 'passing' },
+  ],
+  'Genworx AI': [
+    { value: '92%', label: 'F1', suffix: 'on unseen templates' },
+    { value: '85%', label: 'Less', suffix: 'manual review time' },
+    { value: '10k+', label: 'Docs/day', suffix: 'processed' },
+  ],
+}
+
 const fallback = [
   {
     id: 1,
-    role: 'Software Development Intern',
-    company: 'Genworx AI',
-    duration: 'Oct 2025 - Jan 2026',
-    metrics: [
-      { value: '5', label: 'Agents', suffix: '-agent pipeline' },
-      { value: '3-4hr', label: 'To', suffix: '< 15 min' },
-      { value: '30', label: 'Stories', suffix: 'generated' },
-    ],
+    role: 'Research Software Engineer',
+    company: 'MD Anderson Cancer Center',
+    duration: 'Sept 2026 - Present',
+    metrics: metricsByCompany['MD Anderson Cancer Center'],
     description: [
-      '5-agent LLM pipeline with orchestrator, genre, character, plot & writer agents',
-      'Reduced story generation from 3-4 hours to under 15 minutes',
-      'Maintained narrative consistency across multi-chapter outputs',
-      'Completed 30 story generation requests successfully',
+      'Built a PostgreSQL and FastAPI platform ingesting seven EEG recordings from four participants and 24,494 music-feature rows with SHA-256 file integrity checks and repeatable transactional imports',
+      'Developed researcher-reviewed quality screening, MNE-Python preprocessing and band power/asymmetry extraction; preserved source timestamps, excluded intervals, and analysis provenance',
+      'Established 211 passing tests covering ingestion, numerical behaviour, migrations, permissions, and concurrent retries; validated preprocessing with synthetic signals and imported 4,080 synthetic feature observations',
     ],
   },
   {
     id: 2,
-    role: 'Data Science Intern',
-    company: 'Ether InfoTech',
-    duration: 'Jan 2024 - Feb 2024',
-    metrics: [
-      { value: '2.8%', label: 'MAE', suffix: 'test-set error' },
-      { value: '31%', label: 'Improvement', suffix: 'over baseline' },
-      { value: '19', label: 'Features', suffix: 'selected from 47' },
-    ],
+    role: 'Software Development Intern',
+    company: 'Genworx AI',
+    duration: 'Oct 2025 - Jan 2026',
+    metrics: metricsByCompany['Genworx AI'],
     description: [
-      'Built LSTM stock forecasting model on 10 years of OHLCV data across 15 tickers',
-      'Achieved test-set MAE of 2.8% — 31% improvement over moving-average baseline',
-      'Reduced features from 47 to 19 via correlation selection, cutting training time by 25%',
+      'Built an ingestion and LLM extraction service for medical claims, invoices, and vendor contracts across unstructured PDFs, scanned images, and text files',
+      'Achieved 92% F1 on unseen document templates; added confidence scoring and typed JSON validation to route uncertain results for human review',
+      'Reduced manual data entry and review time by 85%; used asynchronous processing and batching to support 10,000+ documents per day and reduce average API latency by 40%',
     ],
   },
 ]
@@ -68,7 +72,7 @@ export default function Experience() {
 
   const items = error ? fallback : (exp || []).map((e) => ({
     ...e,
-    metrics: [],
+    metrics: metricsByCompany[e.company] || [],
   }))
 
   return (

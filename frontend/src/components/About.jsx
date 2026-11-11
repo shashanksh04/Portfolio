@@ -1,9 +1,3 @@
-const circumference = 2 * Math.PI * 54
-const solved = 150
-const target = 200
-const percentage = Math.min(solved / target, 1)
-const offset = circumference - percentage * circumference
-
 export default function About() {
   return (
     <section id="about" className="py-20 md:py-28 px-5 md:px-6">
@@ -19,16 +13,16 @@ export default function About() {
         <div className="grid md:grid-cols-5 gap-8 md:gap-12">
           <div className="md:col-span-3 space-y-4">
             <p className="text-sm md:text-base text-gray-400 leading-relaxed">
-              I&apos;m an AI &amp; Software Engineer based in <span className="text-white font-medium">Houston, TX</span>, 
-              pursuing a Master of Computer Science at Rice University (Fall 2026). I completed
+              I&apos;m an AI &amp; Software Engineer based in <span className="text-white font-medium">Houston, TX</span>,
+              pursuing a Master of Computer Science at Rice University (expected Dec 2027). I completed
               my Bachelor of Engineering in Computer Science at KPR Institute of
               Engineering and Technology.
             </p>
             <p className="text-sm md:text-base text-gray-400 leading-relaxed">
               As a <span className="text-white font-medium">US Citizen</span> immediately available for remote or Houston-based SWE
-              / AI roles, I bring deep experience in multi-agent LLM pipelines,
-              full-stack development, and machine learning &mdash; with a track record of
-              shipping production-grade systems at startups.
+              / AI roles, I currently work as a <span className="text-white font-medium">Research Software Engineer</span> at
+              MD Anderson Cancer Center, building research data platforms, EEG processing pipelines,
+              and full-stack AI systems &mdash; with a track record of shipping production-grade systems.
             </p>
             <blockquote className="border-l-2 border-accent pl-4 my-6">
               <p className="text-base md:text-lg text-gray-300 italic leading-relaxed">
@@ -38,44 +32,16 @@ export default function About() {
           </div>
 
           <div className="md:col-span-2 flex flex-col gap-4">
-            <div className="bg-dark-800 border border-dark-700 rounded-xl p-5 md:p-6 flex items-center gap-5">
-              <div className="relative w-24 h-24 shrink-0">
-                <svg className="w-24 h-24 -rotate-90" viewBox="0 0 120 120">
-                  <circle cx="60" cy="60" r="54" fill="none" stroke="#21262D" strokeWidth="8" />
-                  <circle
-                    cx="60"
-                    cy="60"
-                    r="54"
-                    fill="none"
-                    stroke="url(#ringGrad)"
-                    strokeWidth="8"
-                    strokeLinecap="round"
-                    strokeDasharray={circumference}
-                    strokeDashoffset={offset}
-                    className="transition-all duration-1000 ease-out"
-                  />
-                  <defs>
-                    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-                      <stop offset="0%" stopColor="#7C3AED" />
-                      <stop offset="100%" stopColor="#22D3EE" />
-                    </linearGradient>
-                  </defs>
-                </svg>
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-xl font-display font-bold text-white">{solved}</span>
-                </div>
-              </div>
-              <div>
-                <p className="text-sm font-semibold text-white">LeetCode Problems</p>
-                <p className="text-xs text-gray-500 mt-0.5">
-                  {percentage >= 1 ? 'Target reached' : `${target - solved} to next goal`}
-                </p>
-                <div className="w-full bg-dark-600 rounded-full h-1 mt-2">
-                  <div
-                    className="h-full rounded-full"
-                    style={{ width: `${percentage * 100}%`, background: 'linear-gradient(90deg, #7C3AED, #22D3EE)' }}
-                  />
-                </div>
+            <div className="bg-dark-800 border border-dark-700 rounded-xl p-5 md:p-6">
+              <p className="text-xs font-mono text-accent tracking-wider">NOW</p>
+              <p className="text-sm font-semibold text-white mt-1">Research Software Engineer</p>
+              <p className="text-xs text-gray-500 mt-0.5">MD Anderson Cancer Center</p>
+              <p className="text-xs text-gray-500">Music in Medicine Research</p>
+              <div className="w-full bg-dark-600 rounded-full h-1 mt-3">
+                <div
+                  className="h-full rounded-full"
+                  style={{ width: '100%', background: 'linear-gradient(90deg, #7C3AED, #22D3EE)' }}
+                />
               </div>
             </div>
 

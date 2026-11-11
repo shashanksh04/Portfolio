@@ -4,8 +4,8 @@ import Reveal from './Reveal'
 const API_BASE = import.meta.env.VITE_API_URL || '/api'
 
 const contactInfo = [
-  { label: 'Phone', value: '+91 9865224126', href: 'tel:+919865224126' },
-  { label: 'Email', value: 'shashanksh2504@gmail.com', href: 'mailto:shashanksh2504@gmail.com' },
+  { label: 'Phone', value: '+1 832-496-0726', href: 'tel:+18324960726' },
+  { label: 'Email', value: 'shashank7.cs@gmail.com', href: 'mailto:shashank7.cs@gmail.com' },
   { label: 'LinkedIn', value: 'linkedin.com/in/shashankkumar029', href: 'https://linkedin.com/in/shashankkumar029' },
   { label: 'GitHub', value: 'github.com/shashanksh04', href: 'https://github.com/shashanksh04' },
 ]
@@ -51,7 +51,6 @@ export default function Contact() {
           <div className="md:col-span-2">
             <div className="bg-dark-800 border border-dark-700 rounded-xl p-5 md:p-6 mb-6">
               <p className="text-xs font-mono text-accent tracking-wider mb-4">
-                {/* Comment intentionally left */}
                 const contactInfo = &#123;
               </p>
               <ul className="space-y-4">

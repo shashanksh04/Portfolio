@@ -5,7 +5,7 @@ const schools = [
     degree: 'Master of Computer Science',
     school: 'Rice University',
     location: 'Houston, TX',
-    period: 'Fall 2026 – Expected',
+    period: 'Expected Dec 2027',
     icon: '🎓',
     coursework: [
       'Machine Learning',
@@ -18,7 +18,7 @@ const schools = [
     degree: 'Bachelor of Engineering in Computer Science',
     school: 'KPR Institute of Engineering and Technology',
     location: 'Coimbatore, India',
-    period: 'Nov 2022 – May 2026',
+    period: 'Nov 2022 – Apr 2026',
     icon: '🎓',
     coursework: [
       'Data Structures & Algorithms',

@@ -6,6 +6,35 @@ const API_BASE = import.meta.env.VITE_API_URL || '/api'
 const fallback = [
   {
     id: 1,
+    title: 'Finance Tracker',
+    description: [
+      'Eight-module finance platform serving 150+ users',
+      'PostgreSQL-backed financial data with AI analysis and goal tracking',
+      'Eight-node LangGraph copilot with SSE streaming and parallel retrieval',
+      'Under 100ms API response latency',
+      'Bill scanning with PaddleOCR, EasyOCR and LLM extraction',
+      'Offline-first SQLite synchronization',
+    ],
+    tech_stack: 'React, Python, FastAPI, PostgreSQL, LangGraph, PaddleOCR, EasyOCR, SQLite, Redis',
+    github_url: 'https://finance.shashankakumar.com/',
+    status: 'Live',
+  },
+  {
+    id: 2,
+    title: 'Password Manager',
+    description: [
+      'Deployed on a Raspberry Pi 5 (8 GB RAM, 256 GB SSD)',
+      'Browser-side vault encryption',
+      'Server-side encrypted synchronization',
+      'p95 API metadata latency under 300ms',
+      'Local search under 100ms across 1,000 vault items',
+    ],
+    tech_stack: 'Python, SQLite, Encryption, Raspberry Pi, Cloudflare Tunnel',
+    github_url: 'https://password.shashankakumar.com/',
+    status: 'Live',
+  },
+  {
+    id: 3,
     title: 'AI-Powered Resume Evaluator',
     description: [
       'LLM-as-judge engine with Ollama (DeepSeek + Gemma)',
@@ -17,20 +46,7 @@ const fallback = [
     status: 'Live',
   },
   {
-    id: 2,
-    title: 'AI-Powered Finance Tracker',
-    description: [
-      'Full-stack finance platform with JWT authentication',
-      'Multi-account transaction management',
-      'Bill OCR with 94% accuracy — receipts processed in under 1.2s',
-      'Financial Copilot with Redis memory',
-    ],
-    tech_stack: 'React, Python, FastAPI, PostgreSQL, Celery, Redis, Ollama',
-    github_url: 'https://github.com/shashanksh04/finance-tracker',
-    status: 'Live',
-  },
-  {
-    id: 3,
+    id: 4,
     title: 'Multi-Agent Story Generation Engine',
     description: [
       '5-agent LLM pipeline with LangGraph & LangChain',
@@ -43,7 +59,7 @@ const fallback = [
     status: 'Demo',
   },
   {
-    id: 4,
+    id: 5,
     title: 'Deep Research Autonomous Agent',
     description: [
       'Autonomous research system with RAG pipelines',
@@ -129,9 +145,14 @@ export default function Projects() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-gray-500 hover:text-accent transition-colors"
+                        aria-label={p.github_url.includes('github.com') ? 'GitHub repository' : 'Visit project'}
                       >
                         <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12 24 5.37 18.63 0 12 0z" />
+                          {p.github_url.includes('github.com') ? (
+                            <path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.73.083-.73 1.205.085 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12 24 5.37 18.63 0 12 0z" />
+                          ) : (
+                            <path d="M14 3h7v7h-2V6.414l-8.293 8.293a1 1 0 0 1-1.414-1.414L17.586 5H14V3zM5 5h5v2H6v11h11v-4h2v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z" />
+                          )}
                         </svg>
                       </a>
                     )}
