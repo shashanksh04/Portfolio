@@ -36,7 +36,7 @@ export default function Education() {
         <Reveal>
           <p className="font-mono text-xs text-accent tracking-widest uppercase mb-2 flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" />
-            02.
+            05.
           </p>
           <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-10 md:mb-14">
             Education<span className="text-accent">/</span>
@@ -67,11 +67,11 @@ export default function Education() {
                       </span>
                     </div>
 
-                    <div className="flex flex-wrap gap-1.5 mt-4">
+                    <div className="flex flex-wrap gap-2 mt-4">
                       {s.coursework.map((c) => (
                         <span
                           key={c}
-                          className="px-2.5 py-1 text-[11px] font-mono font-medium bg-dark-900 text-gray-300 rounded-md border border-dark-600"
+                          className="px-3 py-1 text-xs font-mono font-medium bg-dark-900 text-gray-200 rounded-md border border-dark-600"
                         >
                           {c}
                         </span>

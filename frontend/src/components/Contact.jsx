@@ -80,7 +80,7 @@ export default function Contact() {
               <p className="text-gray-600 ml-2">{'* amazing together'}</p>
               <p className="text-gray-600 ml-2">{'*/'}</p>
               <p className="text-accent mt-2">{'function collaborate() {'}</p>
-              <p className="text-gray-400 ml-4">{'return "hello@shashank.dev";'}</p>
+              <p className="text-gray-400 ml-4">{'return "sk367@rice.edu";'}</p>
               <p className="text-accent">{'}'}</p>
             </div>
           </div>
@@ -89,40 +89,55 @@ export default function Contact() {
             <Reveal delay={200}>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="relative group">
+                  <label htmlFor="contact-name" className="block text-xs font-mono text-gray-300 mb-1.5">
+                    Name
+                  </label>
                   <input
+                    id="contact-name"
                     type="text"
                     name="name"
-                    placeholder="Name"
+                    placeholder="Your name"
                     value={form.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3.5 bg-dark-800 border border-dark-600 rounded-xl text-sm text-gray-100 placeholder-gray-600 focus:outline-none focus:border-accent transition-all duration-300 group-hover:border-dark-500"
+                    aria-label="Name"
+                    className="w-full px-4 py-3.5 bg-dark-800 border border-dark-600 rounded-xl text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:border-accent transition-all duration-300 group-hover:border-dark-500"
                   />
                   <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-accent to-cyan scale-x-0 group-focus-within:scale-x-100 transition-transform duration-500 rounded-full" />
                 </div>
 
                 <div className="relative group">
+                  <label htmlFor="contact-email" className="block text-xs font-mono text-gray-300 mb-1.5">
+                    Email
+                  </label>
                   <input
+                    id="contact-email"
                     type="email"
                     name="email"
-                    placeholder="Email"
+                    placeholder="you@example.com"
                     value={form.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3.5 bg-dark-800 border border-dark-600 rounded-xl text-sm text-gray-100 placeholder-gray-600 focus:outline-none focus:border-accent transition-all duration-300 group-hover:border-dark-500"
+                    aria-label="Email"
+                    className="w-full px-4 py-3.5 bg-dark-800 border border-dark-600 rounded-xl text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:border-accent transition-all duration-300 group-hover:border-dark-500"
                   />
                   <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-accent to-cyan scale-x-0 group-focus-within:scale-x-100 transition-transform duration-500 rounded-full" />
                 </div>
 
                 <div className="relative group">
+                  <label htmlFor="contact-message" className="block text-xs font-mono text-gray-300 mb-1.5">
+                    Message
+                  </label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     rows={5}
-                    placeholder="Message"
+                    placeholder="How can I help?"
                     value={form.message}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3.5 bg-dark-800 border border-dark-600 rounded-xl text-sm text-gray-100 placeholder-gray-600 focus:outline-none focus:border-accent transition-all duration-300 group-hover:border-dark-500 resize-none"
+                    aria-label="Message"
+                    className="w-full px-4 py-3.5 bg-dark-800 border border-dark-600 rounded-xl text-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:border-accent transition-all duration-300 group-hover:border-dark-500 resize-none"
                   />
                   <div className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-accent to-cyan scale-x-0 group-focus-within:scale-x-100 transition-transform duration-500 rounded-full" />
                 </div>

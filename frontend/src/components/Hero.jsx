@@ -1,3 +1,5 @@
+import SignalStudioDemo from './SignalStudioDemo'
+
 const socialLinks = [
   {
     href: 'https://github.com/shashanksh04',
@@ -16,62 +18,50 @@ const socialLinks = [
   },
 ]
 
-const terminalLines = [
-  { prefix: '$', text: 'npm run dev', color: 'text-cyan-DEFAULT' },
-  { prefix: '>', text: 'shashank-ai-engineer@1.0.0 dev', color: 'text-gray-500' },
-  { prefix: '>', text: 'vite', color: 'text-gray-500' },
-  { prefix: '', text: '', color: '' },
-  { prefix: '✓', text: 'ready in 312ms', color: 'text-green-400' },
-  { prefix: '', text: '', color: '' },
-  { prefix: '➜', text: 'Local:   http://localhost:5173/', color: 'text-cyan-DEFAULT' },
-  { prefix: '➜', text: 'Network: http://192.168.1.100:5173/', color: 'text-gray-400' },
-]
-
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center px-5 md:px-10 pt-24 pb-16 relative overflow-hidden"
+      className="min-h-screen flex items-center px-5 md:px-10 pt-28 pb-16 relative overflow-hidden"
     >
-      <div className="max-w-6xl w-full mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+      <div className="max-w-6xl w-full mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center">
         <div className="relative">
-          <p className="text-accent font-mono text-xs tracking-widest uppercase mb-3 flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-accent animate-pulse-glow inline-block" />
-            AI & Software Engineer
+          <p className="font-mono text-xs tracking-widest uppercase mb-4 text-accent">
+            Shashank A Kumar
           </p>
-          <h1 className="text-4xl sm:text-5xl lg:text-7xl font-display font-bold leading-[1.05] mb-4">
-            <span className="text-white">Shashank</span>
-            <br />
-            <span className="text-gradient">A Kumar</span>
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold leading-[1.12] mb-5 text-white">
+            Software Engineer building <span className="text-gradient">research platforms</span> and
+            applied AI systems.
           </h1>
-          <p className="text-base md:text-lg text-gray-400 leading-relaxed mb-6 max-w-lg">
-            US Citizen &mdash; Rice MCS building research data platforms,
-            EEG processing pipelines, and full-stack AI systems.
+          <p className="text-base md:text-lg text-gray-300 leading-relaxed mb-4 max-w-xl">
+            Rice University MCS student developing tools for physiological signal analysis,
+            real-time visualization and reliable data processing.
+          </p>
+          <p className="text-sm text-gray-400 font-mono mb-8">
+            Houston &middot; U.S. citizen &middot; Open to opportunities
           </p>
           <div className="flex flex-wrap gap-3 mb-8">
             <a
               href="#projects"
               className="px-6 py-3 bg-accent text-white font-semibold rounded-xl hover:bg-accent-hover transition-all duration-200 glow-accent"
             >
-              View Projects
+              Featured work
             </a>
             <a
-              href="/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#/work/music-in-medicine"
               className="px-6 py-3 border border-dark-600 text-gray-200 font-medium rounded-xl hover:border-accent hover:text-accent hover:bg-accent/5 transition-all duration-200"
             >
-              Resume
+              Music-in-Medicine case study
             </a>
           </div>
-          <div className="flex gap-4">
+          <div className="flex items-center gap-4">
             {socialLinks.map((s) => (
               <a
                 key={s.label}
                 href={s.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-500 hover:text-accent transition-colors duration-200 p-2 hover:bg-accent/5 rounded-lg"
+                className="text-gray-400 hover:text-accent transition-colors duration-200 p-2 hover:bg-accent/5 rounded-lg"
                 aria-label={s.label}
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -79,36 +69,19 @@ export default function Hero() {
                 </svg>
               </a>
             ))}
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-gray-400 hover:text-accent font-mono transition-colors"
+            >
+              resume.pdf
+            </a>
           </div>
         </div>
 
-        <div className="hidden md:block relative">
-          <div className="bg-dark-800/80 border border-dark-600/50 rounded-xl overflow-hidden shadow-2xl shadow-accent/5">
-            <div className="flex items-center gap-1.5 px-4 py-3 border-b border-dark-600/50">
-              <span className="w-3 h-3 rounded-full bg-red-500/80" />
-              <span className="w-3 h-3 rounded-full bg-amber-500/80" />
-              <span className="w-3 h-3 rounded-full bg-green-500/80" />
-              <span className="ml-2 text-xs text-gray-500 font-mono">terminal — portfolio</span>
-            </div>
-            <div className="p-4 font-mono text-sm leading-relaxed">
-              {terminalLines.map((line, i) => (
-                <p key={i} className={`${line.color} ${line.prefix ? 'flex gap-2' : ''}`}>
-                  {line.prefix && (
-                    <span className="text-accent shrink-0">{line.prefix}</span>
-                  )}
-                  <span className={line.prefix === '' ? 'block h-3' : ''}>
-                    {line.text}
-                    {i === 6 && (
-                      <span className="inline-block w-2 h-4 bg-accent ml-0.5 animate-blink" />
-                    )}
-                  </span>
-                </p>
-              ))}
-            </div>
-          </div>
-
-          <div className="absolute -top-4 -right-4 w-32 h-32 bg-accent/10 rounded-full blur-3xl" />
-          <div className="absolute -bottom-6 -left-6 w-40 h-40 bg-cyan/10 rounded-full blur-3xl" />
+        <div className="relative">
+          <SignalStudioDemo height={300} />
         </div>
       </div>
     </section>

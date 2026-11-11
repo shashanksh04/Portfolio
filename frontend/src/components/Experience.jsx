@@ -5,15 +5,25 @@ const API_BASE = import.meta.env.VITE_API_URL || '/api'
 
 const metricsByCompany = {
   'MD Anderson Cancer Center': [
-    { value: '7', label: 'EEG', suffix: 'recordings ingested' },
-    { value: '24,494', label: 'Music rows', suffix: 'feature data' },
-    { value: '211', label: 'Tests', suffix: 'passing' },
+    { value: '7.26M', label: 'sample frames', suffix: 'timestamped' },
+    { value: '146', label: 'channel records', suffix: 'EEG + multimodal' },
+    { value: '495+14', label: 'tests', suffix: 'backend + frontend' },
   ],
   'Genworx AI': [
-    { value: '92%', label: 'F1', suffix: 'on unseen templates' },
-    { value: '85%', label: 'Less', suffix: 'manual review time' },
-    { value: '10k+', label: 'Docs/day', suffix: 'processed' },
+    { value: '92%', label: 'F1', suffix: 'held-out templates' },
+    { value: '85%', label: 'less review', suffix: 'internal measurement' },
+    { value: '10k+', label: 'docs/day', suffix: 'async batching' },
   ],
+}
+
+const notesByCompany = {
+  'MD Anderson Cancer Center':
+    'Latest documented verification; reported separately from the live system, which has its own suite.',
+  'Genworx AI': 'F1 measured on document templates not seen during development.',
+}
+
+const caseStudyCompanies = {
+  'MD Anderson Cancer Center': '#/work/music-in-medicine',
 }
 
 const fallback = [
@@ -24,9 +34,10 @@ const fallback = [
     duration: 'Sept 2026 - Present',
     metrics: metricsByCompany['MD Anderson Cancer Center'],
     description: [
-      'Built a PostgreSQL and FastAPI platform ingesting seven EEG recordings from four participants and 24,494 music-feature rows with SHA-256 file integrity checks and repeatable transactional imports',
-      'Developed researcher-reviewed quality screening, MNE-Python preprocessing and band power/asymmetry extraction; preserved source timestamps, excluded intervals, and analysis provenance',
-      'Established 211 passing tests covering ingestion, numerical behaviour, migrations, permissions, and concurrent retries; validated preprocessing with synthetic signals and imported 4,080 synthetic feature observations',
+      'Built a PostgreSQL and FastAPI research platform indexing 7.26M timestamped sample frames across seven physiological recordings',
+      'Organized 146 recording-channel entries across EEG and multimodal recordings; stored 24,494 music-feature rows across six datasets for time-window queries',
+      'Developed MNE-Python preprocessing with researcher-reviewed quality screening, band power/asymmetry extraction, and preserved provenance',
+      'Built synchronized EEG/ECG/HR/HRV displays for up to four participants (verified with synthetic streams); registered 303 assets for traceable I/O',
     ],
   },
   {
@@ -36,9 +47,9 @@ const fallback = [
     duration: 'Oct 2025 - Jan 2026',
     metrics: metricsByCompany['Genworx AI'],
     description: [
-      'Built an ingestion and LLM extraction service for medical claims, invoices, and vendor contracts across unstructured PDFs, scanned images, and text files',
-      'Achieved 92% F1 on unseen document templates; added confidence scoring and typed JSON validation to route uncertain results for human review',
-      'Reduced manual data entry and review time by 85%; used asynchronous processing and batching to support 10,000+ documents per day and reduce average API latency by 40%',
+      'Built an ingestion and LLM extraction service for medical claims, invoices and vendor contracts across PDFs, scans and text',
+      'Reached 92% F1 on held-out templates; confidence scoring and typed JSON validation route uncertain results to human review',
+      'Cut manual data-entry and review time by 85% in internal measurement; async batching designed for 10,000+ documents per day',
     ],
   },
 ]
@@ -81,7 +92,7 @@ export default function Experience() {
         <Reveal>
           <p className="font-mono text-xs text-accent tracking-widest uppercase mb-2 flex items-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-accent inline-block" />
-            04.
+            03.
           </p>
           <h2 className="text-3xl md:text-4xl font-display font-bold text-white mb-10 md:mb-14">
             Experience<span className="text-accent">/</span>
@@ -107,7 +118,7 @@ export default function Experience() {
                       @ {e.company}
                     </p>
                   </div>
-                  <span className="text-xs font-mono text-cyan-DEFAULT font-medium shrink-0 px-3 py-1 bg-cyan/10 rounded-full border border-cyan/20">
+                  <span className="text-xs font-mono text-cyan font-medium shrink-0 px-3 py-1 bg-cyan/10 rounded-full border border-cyan/20">
                     {e.duration}
                   </span>
                 </div>
@@ -117,28 +128,39 @@ export default function Experience() {
                     {e.metrics.map((m) => (
                       <div key={m.label} className="bg-dark-900/50 rounded-lg p-3 text-center border border-dark-600">
                         <p className="text-lg md:text-xl font-display font-bold text-gradient">{m.value}</p>
-                        <p className="text-[10px] text-gray-500 font-mono">{m.label}</p>
-                        <p className="text-[10px] text-gray-600">{m.suffix}</p>
+                        <p className="text-xs text-gray-300 font-mono">{m.label}</p>
+                        <p className="text-[11px] text-gray-500">{m.suffix}</p>
                       </div>
                     ))}
                   </div>
                 )}
 
-                <ul className="space-y-1.5">
+                <ul className="space-y-2">
                   {e.description.map((point, j) => (
                     <li
                       key={j}
-                      className="text-sm text-gray-400 leading-relaxed flex items-start gap-2"
+                      className="text-[15px] text-gray-300 leading-relaxed flex items-start gap-2"
                     >
-                      <span className="text-accent mt-1.5 shrink-0">
-                        <svg className="w-3 h-3" viewBox="0 0 12 12" fill="none">
-                          <path d="M4 2l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                        </svg>
-                      </span>
+                      <span className="text-accent mt-1 shrink-0">▸</span>
                       <span>{point}</span>
                     </li>
                   ))}
                 </ul>
+
+                {notesByCompany[e.company] && (
+                  <p className="text-xs text-gray-400 leading-relaxed mt-3 italic">
+                    {notesByCompany[e.company]}
+                  </p>
+                )}
+
+                {caseStudyCompanies[e.company] && (
+                  <a
+                    href={caseStudyCompanies[e.company]}
+                    className="inline-block text-sm font-semibold text-accent hover:text-accent-light mt-4 transition-colors"
+                  >
+                    Read the Music-in-Medicine case study →
+                  </a>
+                )}
               </div>
             </Reveal>
           ))}
