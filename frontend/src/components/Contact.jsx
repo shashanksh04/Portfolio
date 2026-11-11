@@ -4,8 +4,8 @@ import Reveal from './Reveal'
 const API_BASE = import.meta.env.VITE_API_URL || '/api'
 
 const contactInfo = [
-  { label: 'Phone', value: '+1 832-496-0726', href: 'tel:+18324960726' },
-  { label: 'Email', value: 'shashank7.cs@gmail.com', href: 'mailto:shashank7.cs@gmail.com' },
+  { label: 'Phone', value: '+1 832 496 0726', href: 'tel:+18324960726' },
+  { label: 'Email', value: 'sk367@rice.edu', href: 'mailto:sk367@rice.edu' },
   { label: 'LinkedIn', value: 'linkedin.com/in/shashankkumar029', href: 'https://linkedin.com/in/shashankkumar029' },
   { label: 'GitHub', value: 'github.com/shashanksh04', href: 'https://github.com/shashanksh04' },
 ]
